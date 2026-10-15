@@ -45,7 +45,7 @@ export async function requestEnv<T>(path: string, opts: Opts = {}): Promise<{ da
   }
   let res: Response;
   try {
-    res = await fetch(BASE + path, { method: opts.method ?? "GET", headers, body, signal: opts.signal });
+    res = await fetch(BASE + path, { method: opts.method ?? "GET", headers, body: body ?? null, signal: opts.signal ?? null });
   } catch {
     throw new ApiError("Não foi possível conectar à API. Verifique se o servidor está no ar.", 0);
   }
